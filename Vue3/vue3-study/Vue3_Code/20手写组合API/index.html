@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>凉风有性，秋月无边</title>
+</head>
+<body>
+    <script src="./index.js"></script>
+    <script type="text/javascript">
+        const proxyUser1 = shallowReactive({
+            name: '冬菇',
+            car: {
+                color: 'red'
+            }
+        })
+        // 拦截读和写数据
+        // proxyUser1.name += '=='
+        // 拦截读数据，但拦截不到深层的写数据
+        // proxyUser1.car.color += '=='
+        // 拦截删除数据
+        // delete proxyUser1.name
+        // 只拦截读，但是拦截不到深层的删除
+        // delete proxyUser1.car.color
+
+
+
+        const proxyUser2 = reactive({
+            name: '鸡丝',
+            car: {
+                color: 'pink'
+            }
+        })
+        // 拦截读和写数据
+        // proxyUser2.name += '=='
+        // 拦截读和修改数据
+        // proxyUser2.car.color += '=='
+        // 拦截删除数据
+        // delete proxyUser2.name
+        // 只拦截读和删除
+        // delete proxyUser2.car.color
+        
+
+
+        // ==============================
+        const proxyUser3 = shallowReadonly({
+            name: '猪老',
+            cars: ['奥迪', 'AE86']
+        })
+        // 可以读取
+        // console.log(proxyUser3.name);
+        // 不能修改
+        // proxyUser3.name = '=='
+        // 不能删除
+        // delete proxyUser3.name
+        // 拦截到了读取，深度的数据可以修改
+        // proxyUser3.cars[0] = '手摇拖拉机'
+        // 拦截到了读取，深度的数据可以删除
+        // delete proxyUser3.cars[0]
+
+        const proxyUser4 = readonly({
+            name: '小橘子',
+            cars: ['天行者', '机甲']
+        })
+        // 拦截到了读取
+        // console.log(proxyUser4.name);
+        // console.log(proxyUser4.cars[0]);
+        // 拦截到了读取，只能读取不能修改
+        // proxyUser4.name = '紫炎'
+        // proxyUser4.cars[0] = '天马'
+        // 拦截到了读取，只能读取不能删除
+        // delete proxyUser4.name
+        // delete proxyUser4.cars[0]
+
+        const ref1 = shallowRef({
+            name: '小橘子',
+            car: {
+                color: 'red'
+            }
+        })
+        // console.log(ref1.value);
+        // 劫持到浅层修改
+        // ref1.value = "=="
+        // 劫持不到引用数据的修改
+        // ref1.value.car = '=='
+
+        const ref2 = ref({
+            name: '小橘子',
+            cars: {
+                color: 'red'
+            }
+        })
+        // console.log(ref2.value);
+        // ref2.value = "=="
+        // 劫持到了引用类型数据的修改
+        // ref2.value.car =  "green"
+
+        /* 测试判断函数 */
+        // console.log(isRef(ref({})))
+        console.log(isReactive(reactive({})))
+        console.log(reactive({}));
+        // console.log(isReadonly(readonly({})))
+        // console.log(isProxy(reactive({})))
+        // console.log(isProxy(readonly({})))
+    </script>
+
+</body>
+</html>
