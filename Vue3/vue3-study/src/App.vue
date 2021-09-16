@@ -108,6 +108,8 @@ export default defineComponent({
   margin: 0 auto;
 }
 .todo-container .todo-wrap {
+  position: relative;
+  top: 20px;
   padding: 10px;
   border: 1px solid #ddd;
   border-radius: 5px;

@@ -32,12 +32,12 @@ export default defineComponent({
   padding: 0px;
 }
 
-.todo-empty {
+/* .todo-empty {
   height: 40px;
   line-height: 40px;
   border: 1px solid #ddd;
   border-radius: 2px;
   padding-left: 5px;
   margin-top: 10px;
-}
+} */
 </style>
